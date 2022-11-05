@@ -112,14 +112,14 @@
         <hr/>
 
         <!--Forms of the page for room booking-->
-        <form action = "">
+        <form method = "post" action = "https://httpbin.org/anything">
 
             <h2> Customer's Details </h2>
-            <label> First Name: <input type = "text"/> </label>
-            <label> Last Name: <input type = "text"/> </label>
+            <label> First Name: <input type = "text" name = "first_name"/> </label>
+            <label> Last Name: <input type = "text" name = "last_name"/> </label>
             <br/><br/>
-            <label> Phone Number: <input type = "tel"/> </label>
-            <label> Email: <input type = "email"/> </label>
+            <label> Phone Number: <input type = "tel" name = "tel_num"/> </label>
+            <label> Email: <input type = "email" name = "email"/> </label>
 
             <br/><br/><hr/>
 
@@ -133,7 +133,7 @@
             <br/><br/>
 
             <label> Number of Adults: </label>
-            <select>
+            <select name = "num_of_adults">
                 <option> 1 </option>
                 <option> 2 </option>
                 <option> 3 </option>
@@ -145,7 +145,7 @@
             </select>
 
             <label> Number of Children: </label>
-            <select>
+            <select name = "num_of_children">
                 <option> 1 </option>
                 <option> 2 </option>
                 <option> 3 </option>
@@ -158,14 +158,14 @@
 
             <br/><br/>
 
-            <label > Check-in Date: <input type = "date" class="date"/> </label>
-            <label> Check-out Date: <input type = "date" class="date"/> </label>
+            <label > Check-in Date: <input type = "date" class = "date" name = "check_in_date"/> </label>
+            <label> Check-out Date: <input type = "date" class = "date" name = "check_out_date"/> </label>
             
             <br/><br/>
 
             <label> Special Requests:- </label>
             <br/>
-            <textarea rows = "5"> </textarea>
+            <textarea rows = "5" name = "special_requests"> </textarea>
 
             <br/><br/><br/>
 
@@ -181,14 +181,14 @@
         <hr/>
 
         <!--Forms of the page for room hall booking-->
-        <form action = "">
+        <form method = "post" action = "https://httpbin.org/anything">
 
             <h2> Customer's Details </h2>
-            <label> First Name: <input type = "text"/> </label>
-            <label> Last Name: <input type = "text"/> </label>
+            <label> First Name: <input type = "text" name = "first_name"/> </label>
+            <label> Last Name: <input type = "text" name = "last_name"/> </label>
             <br/><br/>
-            <label> Phone Number: <input type = "tel"/> </label>
-            <label> Email: <input type = "email"/> </label>
+            <label> Phone Number: <input type = "tel" name = "tel_num"/> </label>
+            <label> Email: <input type = "email" name = "email"/> </label>
 
             <br/><br/><hr/>
 
@@ -201,26 +201,26 @@
 
             <br/><br/>
 
-            <label> Event Type: <input type = "radio" id = "w" name = "event" value = "W"/> Wedding </label>
-            <label> <input type = "radio" id = "c" name = "event" value = "C"/> Confrence </label>
-            <label> <input type = "radio" id = "bp" name = "event" value = "BP"/> Birthday Party </label>
-            <label> <input type = "radio" id = "gp" name = "event" value = "GP"/> Graduation Party </label>
-            <label> <input type = "radio" id = "m" name = "event" value = "M"/> Meeting </label>
-            <label> <input type = "radio" id = "o" name = "event" value = "O"/> Other </label>
+            <label> Event Type: <input type = "radio" id = "w" name = "event" value = "Wedding"/> Wedding </label>
+            <label> <input type = "radio" id = "c" name = "event" value = "Confrence"/> Confrence </label>
+            <label> <input type = "radio" id = "bp" name = "event" value = "Birthday"/> Birthday Party </label>
+            <label> <input type = "radio" id = "gp" name = "event" value = "Graduation"/> Graduation Party </label>
+            <label> <input type = "radio" id = "m" name = "event" value = "Meeting"/> Meeting </label>
+            <label> <input type = "radio" id = "o" name = "event" value = "Other"/> Other </label>
 
             <br/><br/>
 
-            <label> If you chose <span style = "text-decoration : underline;">Other</span>, please specify the event type: <input type = "text"/> </label>
+            <label> If you chose <span style = "text-decoration : underline;">Other</span>, please specify the event type: <input type = "text" name = "other_event"/> </label>
 
             <br/><br/>
 
-            <label> Date of Event: <input type = "date" class="date"/> </label>
+            <label> Date of Event: <input type = "date" class = "date" name = "date"/> </label>
             
             <br/><br/>
 
             <label> Special Requests:- </label>
             <br/>
-            <textarea rows = "5"> </textarea>
+            <textarea rows = "5" name = "special_requests"> </textarea>
 
             <br/><br/><br/>
 
