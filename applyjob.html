@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Title, and linking file to styling.css and bootstraps-->
+    <title>Job Aplications</title>
+    <link rel="icon" type="image/png" href="Pictures/hpLogo.png">
+    <link rel="stylesheet" href="styling.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <style>
+        /*Formatting h1 in the page*/
+        h1 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 3em;
+            font-weight: lighter;
+            text-decoration: underline;
+            color: #9a7b4f;
+            padding-top: 2em;
+            text-align: center;
+            margin-bottom: 2.5em;
+        }
+
+        /*Formatting h2 in the page*/
+        h2 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 2em;
+            padding-left: 1.5em;
+        }
+
+        /*Formatting h3 in the page*/
+        h3.header {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 3em;
+            font-weight: lighter;
+            color: #9a7b4f;
+            padding-top: 1em;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        /*Formatting list items*/
+        .desc {
+            text-align: left;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.4em;
+            padding-left: 4em;
+        }
+
+        /*Formatting labels and inputs*/
+        label {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.3em;;
+        }
+
+        input {
+            margin-bottom: 1em;
+        }
+
+        select {
+            width: 18em;
+            height: 2em;
+        }
+
+        .button {
+            height: 1.5em;
+            font-size: large;
+            width: 14em;
+        }
+
+        .info {
+            margin-top: 3em;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.3em;
+        }
+
+        /*Formatting table content*/
+        tr {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.3em;
+            border: .1em solid #9A784F;
+        }
+
+        th {
+            border: .1em solid #9A784F;
+        }
+
+        th ul {
+            text-align: left;
+            margin-left: 1em;
+        }
+
+    </style>
+</head>
+
+<body >
+    <!--Header section which include the top navigation bar menu-->
+    <header>
+        <div id="header">
+            <div id="logo-div">
+                <a href="index.html"><img id=logo src="Pictures/Logo-No-BG.png"></a>
+            </div>
+            <nav>
+                <div id="menu">
+                    <ul>
+                        <li><a href="aboutUs.html">About Us</a></li>
+                        <li><a href="booking.html">Booking & Reservation</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="staff.html">Staff & Concierge</a></li>
+                        <li><a href="applyjob.html">Apply for a Job</a></li>
+                        <li><a href="contactUs.html">Contact Us</a></li>
+                        <li><a href="login.html">Log In</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!--General requirements-->
+    <h1>Job Aplication</h1>
+    <hr>   
+        <h3 class="header">Requirements</h3>
+        <h2>Must have done hospitality courses:</h2>
+        <ul style="list-style-type: circle;" class="desc">
+            <li>Hospitality law</li><br>
+            <li>Hospitality financial management</li><br>
+            <li>Hotel and restaurant sales and marketing</li><br>
+            <li>Security</li><br>
+            <li>Facilities management</li><br>
+            <li>Hotel operations</li><br>
+            <li>Restaurant management</li><br>
+        </ul>
+
+    <hr>
+    <br>
+        <!--Table of requirements-->
+        <table style="border: .3em solid #9A784F; border-radius: .3em; opacity: 100%; margin: 0 auto;">
+            <tr>
+                <td rowspan="2"></td>
+                <th colspan="2">Age</th> 
+            </tr>
+            <tr>
+                <th>under 20</th>
+                <th>20 and above</th>
+            </tr>
+            <tr>
+                <th>Requirements</th>
+                <th>
+                    <ul>
+                        <li>Age 15 and above.</li><br>
+                        <li>Parents abroval, you will be givin and contract to be signed by your parents.</li><br>
+                        <li>Rquired to work 3-4 days a week.</li><br>
+                        <li>Work hours are strictly after school.</li><br>
+                        <li>Work hours 2-4 hours.</li><br>
+                    </ul>
+                </th>
+                <th>
+                    <ul>
+                        <li>Clean haircut, no tattoos. no pearcings are allowed.</li><br>
+                        <li>No eyeglass are allowed, only contact lences if needed. </li><br>
+                        <li>Rquired to work 6 days a week.</li><br>
+                        <li>Rquired to work 8 hours a day.</li><br>
+                        <li>No past or recent criminal records.</li><br>
+                    </ul>
+                </th>
+            </tr>
+        </table>
+        <br>
+    <hr>
+
+    <!--Apply for job forms-->
+    <h3 class="header" style="padding-bottom: 1.5em;">Professional Hotel Graduates</h3>
+    <div style="text-align: center;">
+        <form action="">
+            <label>First Name: <input type="text" name="firstName"></label><br>
+            <label>Last Name: <input type="text" name="lastName"></label><br>
+            <label>Gender: <input type="radio" name="gender">Male<input type="radio" name="gender">Female</label><br>
+            <label>ID No. <input type="text" name="iD"></label><br>
+            <label>Phone Number: <input type="text" name="iD"></label><br>
+            <label>Certificate: <input type="file"  class="button"></label><br>
+            <input type="submit" class="button" style="margin-right: 1em;"><input type="reset" class="button">
+        </form>
+    </div>
+    
+    <br>
+    <hr>
+    <h3 class="header" style="padding-bottom: 1.5em;">Part Timers</h3>
+    <div style="text-align: center;">
+        <form action="">
+            <label>First Name: <input type="text" name="firstName"></label><br>
+            <label>Last Name: <input type="text" name="lastName"></label><br>
+            <label>Gender: <input type="radio" name="gender">Male<input type="radio" name="gender">Female</label><br>
+            <label>ID No. <input type="text" name="iD"></label><br>
+            <label>Phone Number: <input type="text" name="iD"></label><br>
+            <input type="submit" class="button"  style="margin-right: 1em;"><input type="reset" class="button">
+        </form>
+        
+    </div>
+        
+        <p class="info">For any further clarifications, please contact us by <a href="" style="color: #9A784F; text-decoration: none; font-style: italic;">Clicking Here</a>.</p>
+        
+    </body>
+
+    <!--Footer of the page-->
+    <footer id="footer-box">
+
+        <div id="footer-cont">
+        <h3> Harmony Plaza</h3>
+        <ul id="social-media">
+            <li><a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a></li>
+            <li><a href="https://www.gmail.com/"><i class="bi bi-envelope"></i></a></li>
+            <li><a href="https://www.youtube.com/"><i class="bi bi-youtube"></i></a></li>
+            <li><a href="https://www.whatsapp.com/"><i class="bi bi-whatsapp"></i></a></li>
+            <li><a href="https://www.twitter.com/"><i class="bi bi-twitter"></i></a></li>
+        </ul>
+        <div id="footer">
+            <p>copyright &copy;2022 harmonyPlaza. designed by mohammed ali, ali murtadha, and sulaiman khalifa</p>
+        </div>
+        </div>
+
+    </footer>
+</html>
