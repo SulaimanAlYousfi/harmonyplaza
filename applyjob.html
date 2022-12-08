@@ -88,8 +88,90 @@
             text-align: left;
             margin-left: 1em;
         }
-
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
     </style>
+    <script type="text/javascript">
+        //constructing an object called 'requirement' with 5 instance variables and 5 methods.
+        const requirement = {
+            //instance variables for 'requirement' object.
+            label: "",
+            under20: "",
+            above20: "",
+            //set methods/functions for 'requirement' objects's instance variables.
+            setLable: function(newLabel) {
+                return (this.label = newLabel);
+            },
+            setUnder20: function(under20data) {
+                return (this.under20 = under20data);
+            },
+            setAbove20: function(above20data) {
+                return (this.above20 = above20data);
+            }
+        };
+
+        //function for adding requirement data into the table t1.
+        function addRow() {
+            //calling the 5 methods of 'requirement' object and assigning them the appropriate values.
+            requirement.setLable(document.getElementById("label").value);
+            requirement.setUnder20(document.getElementById("under20data").value);
+            requirement.setAbove20(document.getElementById("above20data").value);
+
+            //constructing a 'table' variable that gets the <tr> elements from the table, an empty array called 'data', and a counter variable for the array called 'j'.
+            var table = document.getElementById("t1");
+            var data = [];
+            var j = 0;
+            //using for-in loop to add each instance variable value in 'requirement' object into the array 'data'.
+            for (var i in requirement) {
+                data[j] = requirement[i];
+                j++;
+            }
+
+            //creating a variable called 'row' that constructs a new <tr> element.
+            var row = document.createElement("tr");
+            //using for loop to create a <th> element, assign the appropriate value to it from array 'data' and appending it to the row.
+            for (var i = 0; i < 3; i++) {
+                var cell = document.createElement("th");
+                cell.innerHTML = data[i];
+                row.appendChild(cell);
+            }
+            //appending the row to the table.
+            table.appendChild(row);
+        }
+
+        //function for searching in the table.
+        function searchTable() {
+                //constructing three variables: two for the table "t1" and for the <tr>s in the table, and one is an empty array called 'values'.
+                var table = document.getElementById("t1");
+                var rows = table.getElementsByTagName("tr");
+                var values = [];
+                //using nested for loop to add every data in the table to the array.
+                for (var i = 0; i < table.rows.length; i++) {
+                    var row = table.rows[i];
+                    for (var j = 0; j < row.cells.length; j++) {
+                        var cell = row.cells[j];
+                        values.push(cell.innerHTML.toLowerCase());
+                    }
+                }
+                //constructing a variable for assingning the search value from 'search' textbox, and a boolean variable called 'found' for knowing it the search value is found in the table or not.
+                var searchValue = document.getElementById("search").value.toLowerCase();
+                var found = false;
+                //using for loop with if statement to check if the search value is found in the table, displaying an alert, changing found to true, and breaking the loop if the value is found.
+                for (var i = 0; i < values.length; i++) {
+                    if ((searchValue != "") && (values[i].includes(searchValue))) {
+                        alert("Value is found!")
+                        found = true;
+                        break;
+                    }
+                }
+                //using if statement to display an alert if the search value is not found in the table.
+                if (!found)
+                    alert("Value is not found!")
+            }
+    </script>
 </head>
 
 <body >
@@ -118,53 +200,71 @@
     <!--General requirements-->
     <h1>Job Aplication</h1>
     <hr>   
-        <h3 class="header">Requirements</h3>
-        <h2>Must have done hospitality courses:</h2>
-        <ul style="list-style-type: circle;" class="desc">
-            <li>Hospitality law</li><br>
-            <li>Hospitality financial management</li><br>
-            <li>Hotel and restaurant sales and marketing</li><br>
-            <li>Security</li><br>
-            <li>Facilities management</li><br>
-            <li>Hotel operations</li><br>
-            <li>Restaurant management</li><br>
-        </ul>
+    <h3 class="header">Requirements</h3>
+    <h2>Must have done hospitality courses:</h2>
+    <ul style="list-style-type: circle;" class="desc">
+        <li>Hospitality law</li><br>
+        <li>Hospitality financial management</li><br>
+        <li>Hotel and restaurant sales and marketing</li><br>
+        <li>Security</li><br>
+        <li>Facilities management</li><br>
+        <li>Hotel operations</li><br>
+        <li>Restaurant management</li><br>
+    </ul>
 
     <hr>
     <br>
-        <!--Table of requirements-->
-        <table style="border: .3em solid #9A784F; border-radius: .3em; opacity: 100%; margin: 0 auto;">
-            <tr>
-                <td rowspan="2"></td>
-                <th colspan="2">Age</th> 
-            </tr>
-            <tr>
-                <th>under 20</th>
-                <th>20 and above</th>
-            </tr>
-            <tr>
-                <th>Requirements</th>
-                <th>
-                    <ul>
-                        <li>Age 15 and above.</li><br>
-                        <li>Parents abroval, you will be givin and contract to be signed by your parents.</li><br>
-                        <li>Rquired to work 3-4 days a week.</li><br>
-                        <li>Work hours are strictly after school.</li><br>
-                        <li>Work hours 2-4 hours.</li><br>
-                    </ul>
-                </th>
-                <th>
-                    <ul>
-                        <li>Clean haircut, no tattoos. no pearcings are allowed.</li><br>
-                        <li>No eyeglass are allowed, only contact lences if needed. </li><br>
-                        <li>Rquired to work 6 days a week.</li><br>
-                        <li>Rquired to work 8 hours a day.</li><br>
-                        <li>No past or recent criminal records.</li><br>
-                    </ul>
-                </th>
-            </tr>
-        </table>
-        <br>
+    <!--Table of requirements-->
+    <table style="border: .3em solid #9A784F; border-radius: .3em; opacity: 100%; margin: 0 auto;" id="t1">
+        <tr>
+            <td rowspan="2"></td>
+            <th colspan="2">Age</th> 
+        </tr>
+        <tr>
+            <th>under 20</th>
+            <th>20 and above</th>
+        </tr>
+        <tr>
+            <th>Requirements</th>
+            <th>
+                <ul>
+                    <li>Age 15 and above.</li><br>
+                    <li>Parents abroval, you will be givin and contract to be signed by your parents.</li><br>
+                    <li>Rquired to work 3-4 days a week.</li><br>
+                    <li>Work hours are strictly after school.</li><br>
+                    <li>Work hours 2-4 hours.</li><br>
+                </ul>
+            </th>
+            <th>
+                <ul>
+                    <li>Clean haircut, no tattoos. no pearcings are allowed.</li><br>
+                    <li>No eyeglass are allowed, only contact lences if needed. </li><br>
+                    <li>Rquired to work 6 days a week.</li><br>
+                    <li>Rquired to work 8 hours a day.</li><br>
+                    <li>No past or recent criminal records.</li><br>
+                </ul>
+            </th>
+        </tr>
+    </table>
+    <br>
+    <div class="container">
+        <div style="float:left;">
+            <form action="">
+                <input type="text" placeholder="Enter label" id="label">
+                <input type="text" placeholder="Enter data for under 20" id="under20data">
+                <input type="text" placeholder="Enter data for 20 and above" id="above20data">
+                <input type="button" value="add" onclick="addRow()">
+            </form>
+        </div>
+
+        <div style="float:right;">
+            <form action="">
+                <input type="text" placeholder="Enter search value" id="search">
+                <input type="button" value="search" onclick="searchTable()">
+            </form>
+        </div>
+
+    </div>
     <hr>
 
     <!--Apply for job forms-->

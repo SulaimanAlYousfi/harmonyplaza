@@ -74,16 +74,116 @@
             justify-content: center;
             margin-bottom: 1em;
         }
-
         iframe{
             width: 80%;
             height: 500px;
             border-radius: 1em;
         }
+        /**/
+        .hwrap {
+        overflow: hidden; 
+        background: #eee;
+        }
+        .hmove {
+             display: flex; 
+        }
+        .hitem {
+        flex-shrink: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: center;
+        }
+        @keyframes tickerh {
+        0% { transform: translate3d(100%, 0, 0); }
+        100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .hmove { animation: tickerh linear 10s infinite; }
+        .hmove:hover { animation-play-state: paused; }
+        /* album CSS*/
+        .slider{
+            width: 800px;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .slides{
+           width: 500%;
+           height: 500px;
+           display: flex; 
+           margin-left: auto;
+           margin-right: auto;
+        }
+        .slides input{
+            display: none;
+        }
+        .slide{
+            width: 20%;
+            transition: 2s ;
+        }
+        .slide img{
+            width: 800px;
+            height: 500px;
+        }
+        .navigation-mannual{
+            position: absolute;
+            width: 800px;
+            margin-top: -40px;
+            display: flex;
+            justify-content: center;
+        }
+        .mannual-btn{
+            border: 2px solid white;
+            padding: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 1s;
+        }
+        .mannual-btn:not(:last-child){
+            margin-right: 40px;
+        }
+        .mannual-btn:hover{
+            background-color: gray;
+        }
+        #radio1:checked ~ .first{
+            margin-left: 0;
+        }
+        #radio2:checked ~ .first{
+            margin-left: -20%;
+        }
+        #radio3:checked ~ .first{
+            margin-left: -40%;
+        }
+        .navigation-auto{
+          position: absolute;  
+          display: flex;
+          width: 800px;
+          justify-content: center;
+          margin-top: 460px;
+        }
+        .navigation-auto div{
+            border: 2px solid black;
+            padding: 5px;
+            border-radius: 10px;
+            transition: 1s;
+        }
+        .navigation-auto div:not(:last-child){
+            margin-right: 40px;
+        }
+        #radio1:checked ~.navigation-auto .auto-btn-1{
+            background-color: white;
+        }
+        #radio2:checked ~.navigation-auto .auto-btn-2{
+            background-color: white;
+        }
+        #radio3:checked ~.navigation-auto .auto-btn-3{
+            background-color: white;
+        }
     </style>
-
 </head>
-<body style = "overflow-x : hidden;">
+<body onload="displayDate()">
     <!--Header section which include the top navigation bar menu-->
     <header>
         <div id="header">
@@ -110,6 +210,17 @@
     <!--Picture under navigation bar-->
     <img src="Pictures/Hpic.jpg" alt="Hpic" class="Hpic">
     
+    <div>
+        <nav>
+            <div id="menu">
+                <ul>
+                    <li><a href="questionnaire.html">Questionnaire</a></li>
+                    <li><a href="calculate.html">Calculate</a></li>
+                    <li><a href="funpage.html">Funpage</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
     <!--Main page part 1-->
     <h1>HARMONY PLAZA</h1>
@@ -129,7 +240,7 @@
         <div class="card shadow-sm swidth">
             <a href="facilities.html"><img class="bd-placeholder-img card-img-top img"  focusable="true" src="Pictures/MHall.jpg" alt="Hpic"></a>
             <div class="card-body">
-                <p class="card-text">Rentable halls for meeting, luectures and gatherings, with all around service.</p>
+                <p class="card-text">Rentable halls for meeting, luectures and <br>gatherings, with all around service.</p>
                 <!-- THIS PART OF CODE ID FROM BOOSTSTAP AND IS IS USED IN THIS PROJECT!!!!
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -144,7 +255,7 @@
         <div class="card shadow-sm swidth">
             <a href="facilities.html"><img class="bd-placeholder-img card-img-top img"  focusable="true" src="Pictures/Swimming pool.jpg" alt="Hpic"></a>
             <div class="card-body">
-                <p class="card-text">Spaciouse pools enough to fit 150 people, with heating system</p>
+                <p class="card-text">Spaciouse pools enough to fit 150 people, with <br>heating system</p>
                 <!-- THIS PART OF CODE ID FROM BOOSTSTAP AND IS IS USED IN THIS PROJECT!!!!
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -159,7 +270,7 @@
         <div class="card shadow-sm swidth">
             <a href="facilities.html"><img class="bd-placeholder-img card-img-top img"  focusable="true" src="Pictures/balloroom.jpg" alt="Hpic"></a>
             <div class="card-body p2">
-                <p class="card-text">We offer ballrooms for weddings and parties, with all around service</p>
+                <p class="card-text">We offer ballrooms for weddings and parties, <br>with all around service</p>
                 <!-- THIS PART OF CODE ID FROM BOOSTSTAP AND IS IS USED IN THIS PROJECT!!!!
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
@@ -171,10 +282,52 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <h3 class="header" style="margin-top: 10em; margin-bottom: 1.5em;">Album:</h3>
+    <!-- Image slider-->
+    <div class="slider">
+        <div class="slides">
+            <!-- Radio buttons-->
+            <input type="radio" name="radioBtn" id="radio1">
+            <input type="radio" name="radioBtn" id="radio2">
+            <input type="radio" name="radioBtn" id="radio3">
+            <!-- Images -->
+            <div class="slide first">
+                <img src="Pictures/photo1.jpg" alt="p1">
+            </div>
+            <div class="slide second">
+                <img src="Pictures/photo2.jpg" alt="p2">
+            </div>
+            <div class="slide third">
+                <img src="Pictures/photo3.jpg" alt="p3">
+            </div>
+            <div class="navigation-auto">
+                <div class="auto-btn-1"></div>
+                <div class="auto-btn-2"></div>
+                <div class="auto-btn-3"></div>
+            </div>
+        </div>
+            <!-- Manual navigation-->
+            <div class="navigation-mannual">
+                <label for="radio1" class="mannual-btn"></label>
+                <label for="radio2" class="mannual-btn"></label>
+                <label for="radio3" class="mannual-btn"></label>
+            </div>
+    </div>
+    <!-- Album JS-->
+    <script>
+        var counter = 1;
+        setInterval(function(){
+            document.getElementById('radio'+counter).checked = true;
+            counter++
+            if(counter>3){
+                counter = 1;
+            }
+        },3000)
+    </script>
     <!--Why us section-->
     <div>
-        <h3 class="header" style="margin-top: 10em; margin-bottom: 1.5em;">Why Us?</h3>
+        <h3 class="header" style="margin-top: 3em; margin-bottom: 1.5em;">Why Us?</h3>
         <ul style="text-align: center; font-family:'Times New Roman', Times, serif; font-size: 1.4em;">
             <li>One of the world’s highest luxury hotels.</li><br>
             <li>Pefect view of the sunrise and sunset of qurums mesmarizing beach.</li><br>
@@ -207,6 +360,21 @@
     <div class="map">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1899.41363378888!2d58.482595532920655!3d23.628655472633167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e91f8a23601f5a9%3A0x865ed08087f46e00!2sCrowne%20Plaza%20Muscat%2C%20an%20IHG%20Hotel!5e0!3m2!1sen!2som!4v1667500277924!5m2!1sen!2som" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
+    <div class="hwrap">
+        <div class="hmove">
+            <div class="hitem"><p>Welcome to the Harmony Plaza website! Today is <span id="p1"></span>, and the time is <span id="p2"></span>.</p></div>
+        </div>
+    </div>
+    <!-- date JS-->
+    <script>   
+	var date = new Date();
+	var current_date = date.getDate()+"-"+(date.getMonth()+1)+"-"+ date.getFullYear();
+	document.getElementById("p1").innerHTML = current_date;
+    var current_time = date.getHours() + ": " + date.getMinutes();
+    document.getElementById("p2").innerHTML = current_time;
+
+    </script>
+
     
 </body>
 

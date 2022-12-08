@@ -81,6 +81,7 @@
                 font-size: 20px;
                 text-decoration: underline;
                 border-color: white;
+                cursor: pointer;
 
             }
 
@@ -88,7 +89,235 @@
                 color: black;
             }
 
+            /*Formatting inputs with class 'add'*/
+            input.add {
+                background-color: #9a7b4f;
+                color: white;
+                width: 180px;
+                height: 30px;
+                font-size: 15px;
+                text-decoration: underline;
+                border-color: white;
+                cursor: pointer;
+            }
+
+            input.add:hover {
+                color: black;
+            }
+
         </style>
+
+        <script type="text/javascript">
+            //constructing an object called 'room' with 5 instance variables and 5 methods.
+            const room = {
+                //instance variables for 'room' object.
+                name: "",
+                photo: "",
+                description: "",
+                size: "",
+                price: "",
+                //set methods/functions for 'room' objects's instance variables.
+                setRoomName: function(roomName) {
+                    return (this.name = roomName);
+                },
+                setRoomPhoto: function(roomPhoto) {
+                    return (this.photo = roomPhoto);
+                },
+                setRoomDescription: function(roomDescription) {
+                    return (this.description = roomDescription);
+                },
+                setRoomSize: function(roomSize) {
+                    return (this.size = "Size: " + roomSize + " m" + "2".sup());
+                },
+                setRoomPrice: function(roomPrice) {
+                    return (this.price = "Price: " + roomPrice + " OMR /night");
+                },
+            };
+
+            //function for adding room data into the rooms table.
+            function addRoom() {
+                //calling the 5 methods of 'room' object and assigning them the appropriate values.
+                room.setRoomName(document.getElementById("roomName").value);
+                room.setRoomPhoto(document.getElementById("roomPhoto").value);
+                room.setRoomDescription(document.getElementById("roomDescription").value);
+                room.setRoomSize(document.getElementById("roomSize").value);
+                room.setRoomPrice(document.getElementById("roomPrice").value);
+
+                //constructing a 'table' variable that gets the <tr> elements from rooms table, an empty array called 'values', and a counter variable for the array called 'j'.
+                var table = document.querySelectorAll("#rooms tr");
+                var values = [];
+                var j = 0;
+                //using for-in loop to add each instance variable value in 'room' object into the array 'values'.
+                for (var i in room) {
+                    values[j] = room[i];
+                    j++;
+                }
+
+                //creating a <th> element and assigning it the first element of the 'values' array (name of the room), giving it the correct styling, and then adding it to the end of the first row in the table.
+                var name = document.createElement("th");
+                name.innerHTML = values[0];
+                name.setAttribute("class", "data");
+                table[0].appendChild(name);
+                //creating a <td> element and an <img> element, assigning the second element of the 'values' array (photo of the room) to the 'src' attribute , giving it the correct styling, and then adding it to the <td> element, and adding the <td> to the end of the second row in the table.
+                var photo = document.createElement("td");
+                photo.setAttribute("class", "data");
+                var image = document.createElement("img");
+                image.setAttribute("src", values[1]);
+                image.setAttribute("alt", ("image of " + values[0]));
+                image.setAttribute("class", "room");
+                photo.appendChild(image);
+                table[1].appendChild(photo);
+                //creating a <td> element and assigning it the third element of the 'values' array (description of the room), giving it the correct styling, and then adding it to the end of the third row in the table.
+                var description = document.createElement("td");
+                description.innerHTML = values[2];
+                description.setAttribute("class", "data");
+                description.setAttribute("id", "description");
+                table[2].appendChild(description);
+                //creating a <td> element and assigning it the fourth element of the 'values' array (size of the room), giving it the correct styling, and then adding it to the end of the fourth row in the table.
+                var size = document.createElement("td");
+                size.innerHTML = values[3];
+                size.setAttribute("class", "data");
+                size.setAttribute("id", "sizeANDprice");
+                table[3].appendChild(size);
+                //creating a <td> element and assigning it the last element of the 'values' array (price of the room), giving it the correct styling, and then adding it to the end of the last row in the table.
+                var price = document.createElement("td");
+                price.innerHTML = values[4];
+                price.setAttribute("class", "data");
+                price.setAttribute("id", "sizeANDprice");
+                table[4].appendChild(price);
+            }
+
+            //function for searching a specific value in rooms table.
+            function searchRoom() {
+                //constructing three variables: two for the table 'rooms' and for the <tr>s in the table, and one is an empty array called 'values'.
+                var table = document.getElementById("rooms");
+                var rows = table.getElementsByTagName("tr");
+                var values = [];
+                //using nested for loop to add every data in the table to the array.
+                for (var i = 0; i < table.rows.length; i++) {
+                    var row = table.rows[i];
+                    for (var j = 0; j < row.cells.length; j++) {
+                        var cell = row.cells[j];
+                        values[(5*i)+j] = cell.innerHTML.toLowerCase();
+                    }
+                }
+
+                //constructing a variable for assingning the search value from 'roomValue' textbox, and a boolean variable called 'found' for knowing it the search value is found in the table or not.
+                var searchValue = document.getElementById("roomValue").value.toLowerCase();
+                var found = false;
+                //using for loop with if statement to check if the search value is found in the table, displaying an alert, changing found to true, and breaking the loop if the value is found.
+                for (var i = 0; i < values.length; i++) {
+                    if ((searchValue != "") && (values[i].includes(searchValue))) {
+                        alert("Value is found!")
+                        found = true;
+                        break;
+                    }
+                }
+                //using if statement to display an alert if the search value is not found in the table.
+                if (!found)
+                    alert("Value is not found!")
+            }
+
+            //constructing an object called 'hall' with 5 instance variables and 5 methods.
+            const hall = {
+                //instance variables for 'hall' object.
+                name: "",
+                photo: "",
+                description: "",
+                price: "",
+                //set methods/functions for 'hall' objects's instance variables.
+                setHallName: function(hallName) {
+                    return (this.name = hallName);
+                },
+                setHallPhoto: function(hallPhoto) {
+                    return (this.photo = hallPhoto);
+                },
+                setHallDescription: function(hallDescription) {
+                    return (this.description = hallDescription);
+                },
+                setHallPrice: function(hallPrice) {
+                    return (this.price = "Price: " + hallPrice + " OMR");
+                },
+            };
+
+            //function for adding hall data into the ballroom/halls table.
+            function addHall() {
+                //calling the 5 methods of 'hall' object and assigning them the appropriate values.
+                hall.setHallName(document.getElementById("hallName").value);
+                hall.setHallPhoto(document.getElementById("hallPhoto").value);
+                hall.setHallDescription(document.getElementById("hallDescription").value);
+                hall.setHallPrice(document.getElementById("hallPrice").value);
+
+                //constructing a 'table' variable that gets the <tr> elements from ballroom/halls table, an empty array called 'values', and a counter variable for the array called 'j'.
+                var table = document.querySelectorAll("#halls tr");
+                var values = [];
+                var j = 0;
+                //using for-in loop to add each instance variable value in 'hall' object into the array 'values'.
+                for (var i in hall) {
+                    values[j] = hall[i];
+                    j++;
+                }
+
+                //creating a <th> element and assigning it the first element of the 'values' array (name of the ballroom/hall), giving it the correct styling, and then adding it to the end of the first row in the table.
+                var name = document.createElement("th");
+                name.innerHTML = values[0];
+                name.setAttribute("class", "data");
+                table[0].appendChild(name);
+                //creating a <td> element and an <img> element, assigning the second element of the 'values' array (photo of the ballroom/hall) to the 'src' attribute , giving it the correct styling, and then adding it to the <td> element, and adding the <td> to the end of the second row in the table.
+                var photo = document.createElement("td");
+                photo.setAttribute("class", "data");
+                var image = document.createElement("img");
+                image.setAttribute("src", values[1]);
+                image.setAttribute("alt", ("image of " + values[0]));
+                image.setAttribute("class", "room");
+                photo.appendChild(image);
+                table[1].appendChild(photo);
+                //creating a <td> element and assigning it the third element of the 'values' array (description of the ballroom/hall), giving it the correct styling, and then adding it to the end of the third row in the table.
+                var description = document.createElement("td");
+                description.innerHTML = values[2];
+                description.setAttribute("class", "data");
+                description.setAttribute("id", "description");
+                table[2].appendChild(description);
+                //creating a <td> element and assigning it the last element of the 'values' array (price of the ballroom/hall), giving it the correct styling, and then adding it to the end of the last row in the table.
+                var price = document.createElement("td");
+                price.innerHTML = values[3];
+                price.setAttribute("class", "data");
+                price.setAttribute("id", "sizeANDprice");
+                table[3].appendChild(price);
+            }
+
+            //function for searching a specific value in ballroom/halls table.
+            function searchHall() {
+                //constructing three variables: two for the table 'halls' and for the <tr>s in the table, and one is an empty array called 'values'.
+                var table = document.getElementById("halls");
+                var rows = table.getElementsByTagName("tr");
+                var values = [];
+                //using nested for loop to add every data in the table to the array.
+                for (var i = 0; i < table.rows.length; i++) {
+                    var row = table.rows[i];
+                    for (var j = 0; j < row.cells.length; j++) {
+                        var cell = row.cells[j];
+                        values[(5*i)+j] = cell.innerHTML.toLowerCase();
+                    }
+                }
+
+                //constructing a variable for assingning the search value from 'hallValue' textbox, and a boolean variable called 'found' for knowing it the search value is found in the table or not.
+                var searchValue = document.getElementById("hallValue").value.toLowerCase();
+                var found = false;
+                //using for loop with if statement to check if the search value is found in the table, displaying an alert, changing found to true, and breaking the loop if the value is found.
+                for (var i = 0; i < values.length; i++) {
+                    if ((searchValue != "") && (values[i].includes(searchValue))) {
+                        alert("Value is found!")
+                        found = true;
+                        break;
+                    }
+                }
+                //using if statement to display an alert if the search value is not found in the table.
+                if (!found)
+                    alert("Value is not found!")
+            }
+            
+        </script>
 
     </head>
 
@@ -124,10 +353,10 @@
         <h2> Book a Room </h2>
         <hr/><br/>
 
-        <div class = "table">
+        <div class = "table" id="table1">
 
             <!--Tables which indlude rooms data-->
-            <table>
+            <table id="rooms">
 
                 <tr>
     
@@ -189,7 +418,36 @@
             <input type = "button" value = "Reserve a Room"/>
         </a>
 
-        <br/><hr/><br/><br/><br/>
+        <br/><hr/>
+
+        <div style="height:250px;">
+            <!--Division that includes a form for adding a room to the rooms table-->
+            <div style="float:left; width:950px;">
+                <h2> Add a Room </h2>
+                <form action="">
+                    <span> Room Name: <input type="text" id="roomName"/></span>
+                    <span> Room Picture Link/Path: <input type="text" id="roomPhoto"/></span>
+                    <br/><br/>
+                    <span> Room Description: <input type="text" id="roomDescription"/></span>
+                    <span> Room Size: <input type="text" id="roomSize"/></span>
+                    <span> Room Price: <input type="text" id="roomPrice"/></span>
+                    <br/><br/>
+                    <input type="button" value="Add Room" class="add" onclick="addRoom()"/>
+                </form>
+            </div>
+            <!--Division that includes a form for for searching for specific value in rooms table-->
+            <div style="float:right; width:515px; margin-right: 30px;">
+                <h2> Search in Room </h2>
+                <form action="">
+                    <span> Search Value: <input type="text" id="roomValue"/></span>
+                    <br/><br/>
+                    <input type="button" value="Search" class="add" onclick="searchRoom()"/>
+                </form>
+            </div>
+        </div>
+        
+
+        <hr/><br/><br/><br/><br/><br/><br/>
 
         <h2> Book a Ballrom/Hall </h2>
         <hr/><br/>
@@ -197,7 +455,7 @@
         <div class = "table">
 
             <!--Table which include Ballroom & halls information-->
-            <table>
+            <table id="halls">
 
                 <tr>
     
@@ -251,6 +509,31 @@
 
         <br/><hr/>
 
+        <div style="height:250px;">
+            <!--Division that includes a form for adding a ballroom/hall to the ballroom/halls table-->
+            <div style="float:left; width: 750px;">
+                <h2> Add a Ballroom/Hall </h2>
+                <form action="">
+                    <span> Hall Name: <input type="text" id="hallName"/></span>
+                    <span> Hall Picture Link/Path: <input type="text" id="hallPhoto"/></span>
+                    <br/><br/>
+                    <span> Hall Description: <input type="text" id="hallDescription"/></span>
+                    <span> Hall Price: <input type="text" id="hallPrice"/></span>
+                    <br/><br/>
+                    <input type="button" value="Add Ballroom/Hall" class="add" onclick="addHall()"/>
+                </form>
+            </div>
+            <!--Division that includes a form for for searching for specific value in ballroom/halls table-->
+            <div style="float:right; width:550px; margin-right: 30px;">
+                <h2> Search in Ballroom/Hall </h2>
+                <form action="">
+                    <span> Search Value: <input type="text" id="hallValue"/></span>
+                    <br/><br/>
+                    <input type="button" value="Search" class="add" onclick="searchHall()"/>
+                </form>
+            </div>
+        </div>
+        
     </body>
 
     <!--Footer of the page-->
