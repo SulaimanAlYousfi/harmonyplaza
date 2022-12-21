@@ -1,0 +1,143 @@
+/*General styling for default format*/
+body{
+    margin: 0px;
+    padding: 0px;
+}
+     
+ol, ul{
+    margin-top: 0;
+    padding: 0;
+    list-style: none;
+}
+ 
+p {
+    line-height: 180%;
+}
+
+
+/*Styling the top navigation menu bar*/
+body {
+    background-color: #fcf7f1;
+}
+
+#header {
+    text-align: center;
+    height: 5%;
+}
+
+#logo-div {
+    background-color: #9a7b4f;
+}
+
+#logo {
+   text-align: center;
+   width: 4%;
+   height: auto;
+}
+
+#menu{
+    float: none;
+    margin: 0;
+    background-color: #7c6240;
+}
+     
+#menu ul{
+    text-align: center;
+    float: none;
+    margin: 0;
+}
+     
+#menu li{
+    margin: 1%;
+    color: white;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+     
+#menu li a, #menu li span{
+    
+    height: 120%;
+    display: inline-block;
+    padding: 0 3em;
+    text-decoration: none;
+    font-weight: 1000;
+    text-transform: uppercase;
+    line-height: 4em;
+}
+
+#menu a {
+    font-size: 1.1em;
+    color: aliceblue;
+}
+
+#menu li:hover a {
+    color: #2e1503;
+}
+
+
+/*Footer styling*/
+footer {
+    background-color: black;
+    height: auto;
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 2em;
+    padding-top: 1em;
+    color: aliceblue;
+}
+
+#footer-cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+#footer-cont h3 {
+    font-size: 1.7em;
+    font-weight: 350;
+    text-transform: capitalize;
+    line-height: 2.8em;
+}
+
+#social-media {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.2em 0 3.2em 0;
+}
+
+#social-media li {
+    margin: 0 1.2em;
+}
+
+#social-media {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+#social-media a i {
+    font-size: 1.2em;
+    color: aliceblue;
+}
+
+#social-media a:hover i {
+    color: #9a7b4f;
+}
+
+#footer {
+    background-color: black;
+    width: 100%;
+    padding: 1.5em 0;
+    text-align: center;
+}
+
+#footer p {
+    font-size: 1em;
+    word-spacing: 0.em;
+    text-transform: capitalize;
+}

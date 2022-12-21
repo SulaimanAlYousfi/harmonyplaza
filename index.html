@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Title, and linking file to styling.css and bootstraps-->
+    <title>Harmony Plaza</title>
+    <link rel="icon" type="image/png" href="Pictures/hpLogo.png">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
+    <link href="/docs/5.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="styling.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <style>
+        /*Formatting top picture*/
+        .Hpic {
+            width: 100%;
+            height: 35em;
+            object-fit: cover;
+            margin-bottom: 5em;
+        }
+
+        /*Formatting h1 in the page*/
+        h1 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 3em;
+            font-weight: lighter;
+            text-decoration: underline;
+            color: #9a7b4f;
+            padding-top: 2em;
+            text-align: center;
+            margin-bottom: 2.5em;
+        }
+
+        /*Formatting h3 in the page*/
+        h3.header {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 3em;
+            font-weight: lighter;
+            color: #9a7b4f;
+            padding-top: 2em;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        /*Formatting p1 class*/
+        .p1 {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.4em;
+            padding-top: 1em;
+            margin: 0;
+            text-align: center;
+            padding-left: 20em;
+            padding-right: 20em;
+        }
+
+        .card-text {
+            font-size: 1em;
+            width: 35em;
+        }
+            
+        .swidth{
+            width: 30%; 
+            float: left;
+            margin-left: 1.66666%;
+            margin-right: 1.66666%;
+            margin-bottom: 1em;
+        }
+        
+        /*Formatting the map*/
+        .map{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1em;
+        }
+        iframe{
+            width: 80%;
+            height: 500px;
+            border-radius: 1em;
+        }
+        /**/
+        .hwrap {
+        overflow: hidden; 
+        background: #eee;
+        }
+        .hmove {
+             display: flex; 
+        }
+        .hitem {
+        flex-shrink: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        text-align: center;
+        }
+        @keyframes tickerh {
+        0% { transform: translate3d(100%, 0, 0); }
+        100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .hmove { animation: tickerh linear 10s infinite; }
+        .hmove:hover { animation-play-state: paused; }
+        /* album CSS*/
+        .slider{
+            width: 800px;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .slides{
+           width: 500%;
+           height: 500px;
+           display: flex; 
+           margin-left: auto;
+           margin-right: auto;
+        }
+        .slides input{
+            display: none;
+        }
+        .slide{
+            width: 20%;
+            transition: 2s ;
+        }
+        .slide img{
+            width: 800px;
+            height: 500px;
+        }
+        .navigation-mannual{
+            position: absolute;
+            width: 800px;
+            margin-top: -40px;
+            display: flex;
+            justify-content: center;
+        }
+        .mannual-btn{
+            border: 2px solid white;
+            padding: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 1s;
+        }
+        .mannual-btn:not(:last-child){
+            margin-right: 40px;
+        }
+        .mannual-btn:hover{
+            background-color: gray;
+        }
+        #radio1:checked ~ .first{
+            margin-left: 0;
+        }
+        #radio2:checked ~ .first{
+            margin-left: -20%;
+        }
+        #radio3:checked ~ .first{
+            margin-left: -40%;
+        }
+        .navigation-auto{
+          position: absolute;  
+          display: flex;
+          width: 800px;
+          justify-content: center;
+          margin-top: 460px;
+        }
+        .navigation-auto div{
+            border: 2px solid black;
+            padding: 5px;
+            border-radius: 10px;
+            transition: 1s;
+        }
+        .navigation-auto div:not(:last-child){
+            margin-right: 40px;
+        }
+        #radio1:checked ~.navigation-auto .auto-btn-1{
+            background-color: white;
+        }
+        #radio2:checked ~.navigation-auto .auto-btn-2{
+            background-color: white;
+        }
+        #radio3:checked ~.navigation-auto .auto-btn-3{
+            background-color: white;
+        }
+    </style>
+</head>
+<body onload="displayDate()">
+    <!--Header section which include the top navigation bar menu-->
+    <header>
+        <div id="header">
+            <div id="logo-div">
+                <a href="index.html"><img id=logo src="Pictures/Logo-No-BG.png"></a>
+            </div>
+            <nav>
+                <div id="menu">
+                    <ul>
+                        <li><a href="aboutUs.html">About Us</a></li>
+                        <li><a href="booking.php">Booking & Reservation</a></li>
+                        <li><a href="facilities.html">Facilities</a></li>
+                        <li><a href="staff.html">Staff & Concierge</a></li>
+                        <li><a href="applyjob.php">Apply for a Job</a></li>
+                        <li><a href="contactUs.php">Contact Us</a></li>
+                        <li><a href="login.php">Log In</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+    </header>
+
+    <!--Picture under navigation bar-->
+    <img src="Pictures/Hpic.jpg" alt="Hpic" class="Hpic">
+    
+    <div>
+        <nav>
+            <div id="menu">
+                <ul>
+                    <li><a href="questionnaire.php">Questionnaire</a></li>
+                    <li><a href="calculate.html">Calculate</a></li>
+                    <li><a href="funpage.html">Funpage</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div>
+        <nav>
+            <div id="menu">
+                <ul>
+                    <li><a href="booking2.php">Room's table</a></li>
+                    <li><a href="login.php">Login page (Updated)</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!--Main page part 1-->
+    <h1>HARMONY PLAZA</h1>
+    <br>
+    <p class="p1">Here at HarmonyPlaza, we offer the luxury of its purest means, from our aesthetic rooming  
+     to our antique furniture and spacious hallways to our exemplary services. We are ready to 
+    greet our customers like kings and queens and make it an unforgettable vacation for them.          
+    </p>   
+    <br>
+    <br>
+    <hr>
+    <!--Main Page part 2-->
+    <h3 class="header">We Offer</h3>
+    <br>
+    <div class="Cdiv">
+        <!--What we offer No.1-->
+        <div class="card shadow-sm swidth">
+            <a href="facilities.html"><img class="bd-placeholder-img card-img-top img"  focusable="true" src="Pictures/MHall.jpg" alt="Hpic"></a>
+            <div class="card-body">
+                <p class="card-text">Rentable halls for meeting, luectures and <br>gatherings, with all around service.</p>
+                <!-- THIS PART OF CODE ID FROM BOOSTSTAP AND IS IS USED IN THIS PROJECT!!!!
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                </div>-->
+            </div>
+        </div>
+        <!--What we offer No.2-->
+        <div class="card shadow-sm swidth">
+            <a href="facilities.html"><img class="bd-placeholder-img card-img-top img"  focusable="true" src="Pictures/Swimming pool.jpg" alt="Hpic"></a>
+            <div class="card-body">
+                <p class="card-text">Spaciouse pools enough to fit 150 people, with <br>heating system</p>
+                <!-- THIS PART OF CODE ID FROM BOOSTSTAP AND IS IS USED IN THIS PROJECT!!!!
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                </div>-->
+            </div>
+        </div>
+        <!--What we offer No.3-->
+        <div class="card shadow-sm swidth">
+            <a href="facilities.html"><img class="bd-placeholder-img card-img-top img"  focusable="true" src="Pictures/balloroom.jpg" alt="Hpic"></a>
+            <div class="card-body p2">
+                <p class="card-text">We offer ballrooms for weddings and parties, <br>with all around service</p>
+                <!-- THIS PART OF CODE ID FROM BOOSTSTAP AND IS IS USED IN THIS PROJECT!!!!
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <br>
+    <h3 class="header" style="margin-top: 10em; margin-bottom: 1.5em;">Album:</h3>
+    <!-- Image slider-->
+    <div class="slider">
+        <div class="slides">
+            <!-- Radio buttons-->
+            <input type="radio" name="radioBtn" id="radio1">
+            <input type="radio" name="radioBtn" id="radio2">
+            <input type="radio" name="radioBtn" id="radio3">
+            <!-- Images -->
+            <div class="slide first">
+                <img src="Pictures/photo1.jpg" alt="p1">
+            </div>
+            <div class="slide second">
+                <img src="Pictures/photo2.jpg" alt="p2">
+            </div>
+            <div class="slide third">
+                <img src="Pictures/photo3.jpg" alt="p3">
+            </div>
+            <div class="navigation-auto">
+                <div class="auto-btn-1"></div>
+                <div class="auto-btn-2"></div>
+                <div class="auto-btn-3"></div>
+            </div>
+        </div>
+            <!-- Manual navigation-->
+            <div class="navigation-mannual">
+                <label for="radio1" class="mannual-btn"></label>
+                <label for="radio2" class="mannual-btn"></label>
+                <label for="radio3" class="mannual-btn"></label>
+            </div>
+    </div>
+    <!-- Album JS-->
+    <script>
+        var counter = 1;
+        setInterval(function(){
+            document.getElementById('radio'+counter).checked = true;
+            counter++
+            if(counter>3){
+                counter = 1;
+            }
+        },3000)
+    </script>
+    <!--Why us section-->
+    <div>
+        <h3 class="header" style="margin-top: 3em; margin-bottom: 1.5em;">Why Us?</h3>
+        <ul style="text-align: center; font-family:'Times New Roman', Times, serif; font-size: 1.4em;">
+            <li>One of the world’s highest luxury hotels.</li><br>
+            <li>Pefect view of the sunrise and sunset of qurums mesmarizing beach.</li><br>
+            <li>Provides of of the most luxurious rentable halls in oman for resonable prices.</li><br>
+        </ul>
+        <div style="margin-bottom: 15em;">
+            <div style="margin-bottom: 0px; float: left; width: 30%; margin-left: 5%;">
+                <!--Clock SVG-->
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16" style="float: left; margin-right:1em;margin-left:1em;">
+                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                </svg>
+                <p style="margin-bottom: 0px;">CHECK-IN 14:00 | CHECK-OUT 12:00</p>
+                <br>
+                <!--Wifi SVG-->
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-wifi" viewBox="0 0 16 16" style="float: left; margin-right:1em;margin-left:1em;">
+                    <path d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.444 12.444 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049z"/>
+                    <path d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.455 9.455 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.473 6.473 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091l.016-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z"/>
+                </svg> <p style="margin-bottom: 0px;">Complimentary high-speed WiFi</p>
+                <br>
+                <p style="padding-left: 3.6em;">Luxury outdoor pool.</p>
+            </div>
+            <br>
+        </div>
+    </div>
+    <hr>
+
+    <!--Map part-->
+    <h3 class="header" style="margin-bottom: 1.5em;">Location</h3>
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1899.41363378888!2d58.482595532920655!3d23.628655472633167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e91f8a23601f5a9%3A0x865ed08087f46e00!2sCrowne%20Plaza%20Muscat%2C%20an%20IHG%20Hotel!5e0!3m2!1sen!2som!4v1667500277924!5m2!1sen!2som" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="hwrap">
+        <div class="hmove">
+            <div class="hitem"><p>Welcome to the Harmony Plaza website! Today is <span id="p1"></span>, and the time is <span id="p2"></span>.</p></div>
+        </div>
+    </div>
+    <!-- date JS-->
+    <script>   
+	var date = new Date();
+	var current_date = date.getDate()+"-"+(date.getMonth()+1)+"-"+ date.getFullYear();
+	document.getElementById("p1").innerHTML = current_date;
+    var current_time = date.getHours() + ": " + date.getMinutes();
+    document.getElementById("p2").innerHTML = current_time;
+
+    </script>
+
+    
+</body>
+
+<!--Footer of the page-->
+<footer id="footer-box">
+    <div id="footer-cont">
+    <h3> Harmony Plaza</h3>
+    <ul id="social-media">
+        <li><a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a></li>
+        <li><a href="https://www.gmail.com/"><i class="bi bi-envelope"></i></a></li>
+        <li><a href="https://www.youtube.com/"><i class="bi bi-youtube"></i></a></li>
+        <li><a href="https://www.whatsapp.com/"><i class="bi bi-whatsapp"></i></a></li>
+        <li><a href="https://www.twitter.com/"><i class="bi bi-twitter"></i></a></li>
+    </ul>
+    <div id="footer">
+        <p>copyright &copy;2022 harmonyPlaza. designed by mohammed ali, ali murtadha, and sulaiman khalifa</p>
+    </div>
+    </div>
+
+</footer>
+</html>
